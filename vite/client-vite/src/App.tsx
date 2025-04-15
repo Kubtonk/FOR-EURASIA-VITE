@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./App.css";
 
-// Все модификации
 const MODIFICATIONS = [
   "Жатка зерновая",
   "Жатка кукурузная",
@@ -11,7 +10,6 @@ const MODIFICATIONS = [
   "Увеличенный бункер"
 ];
 
-// Рекомендации по модификациям
 const RECOMMENDATIONS: Record<string, string> = {
   "Жатка зерновая": "Увеличенный бункер",
   "Жатка кукурузная": "Увеличенный бункер"
@@ -28,12 +26,10 @@ function App() {
     );
   };
 
-  // 👉 Проверяем рекомендации при изменении выбора
   useEffect(() => {
     const triggered = selected.find((mod) => RECOMMENDATIONS[mod]);
     if (triggered) {
       const rec = RECOMMENDATIONS[triggered];
-      // Показываем рекомендацию, если она ещё не выбрана
       if (!selected.includes(rec)) {
         setRecommended(rec);
       } else {
@@ -72,9 +68,8 @@ function App() {
         </div>
       ))}
 
-      {/* 💡 Показ рекомендации */}
       {recommended && (
-        <div style={{ margin: "10px 0", color: "orange" }}>
+        <div style={{ margin: "9px 0", color: "green" }}>
           💡 Рекомендуется также выбрать: <strong>{recommended}</strong>
         </div>
       )}
